@@ -1,0 +1,23 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English to Hindi Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Language Translator: English to Hindi</h2>
+        <form method="POST" action="/">
+            <textarea placeholder="Enter text here..." name="data" required></textarea><br>
+            <button type="submit">Translate</button>
+        </form>
+        <h4>Result</h4>
+        {% if result %}
+            <div class="result-box">{{ result }}</div>
+        {% else %}
+            <div class="result-box"></div>
+        {% endif %}
+    </div>
+</body>
+</html>
