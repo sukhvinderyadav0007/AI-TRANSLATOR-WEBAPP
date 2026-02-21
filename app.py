@@ -7,50 +7,11 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 models = {}
 tokenizers = {}
 
-# Model configurations for different language pairs
+# Model configurations for Hindi, Korean, and French
 LANGUAGE_MODELS = {
-    # Original languages
-    'chinese': 'Helsinki-NLP/opus-mt-en-zh',
-    'zh': 'Helsinki-NLP/opus-mt-en-zh',
-    'german': 'Helsinki-NLP/opus-mt-en-de',
-    'de': 'Helsinki-NLP/opus-mt-en-de',
-    'hindi': 'Helsinki-NLP/opus-mt-en-hi',
-    'hi': 'Helsinki-NLP/opus-mt-en-hi',
-    'korean': 'Helsinki-NLP/opus-mt-en-ko',
-    'ko': 'Helsinki-NLP/opus-mt-en-ko',
-    'spanish': 'Helsinki-NLP/opus-mt-en-es',
-    'es': 'Helsinki-NLP/opus-mt-en-es',
-    'french': 'Helsinki-NLP/opus-mt-en-fr',
-    'fr': 'Helsinki-NLP/opus-mt-en-fr',
-    'japanese': 'Helsinki-NLP/opus-mt-en-ja',
-    'ja': 'Helsinki-NLP/opus-mt-en-ja',
-    'russian': 'Helsinki-NLP/opus-mt-en-ru',
-    'ru': 'Helsinki-NLP/opus-mt-en-ru',
-    'arabic': 'Helsinki-NLP/opus-mt-en-ar',
-    'ar': 'Helsinki-NLP/opus-mt-en-ar',
-    'portuguese': 'Helsinki-NLP/opus-mt-en-pt',
-    'pt': 'Helsinki-NLP/opus-mt-en-pt',
-    # Additional 10 languages
-    'italian': 'Helsinki-NLP/opus-mt-en-it',
-    'it': 'Helsinki-NLP/opus-mt-en-it',
-    'turkish': 'Helsinki-NLP/opus-mt-en-tr',
-    'tr': 'Helsinki-NLP/opus-mt-en-tr',
-    'thai': 'Helsinki-NLP/opus-mt-en-th',
-    'th': 'Helsinki-NLP/opus-mt-en-th',
-    'vietnamese': 'Helsinki-NLP/opus-mt-en-vi',
-    'vi': 'Helsinki-NLP/opus-mt-en-vi',
-    'indonesian': 'Helsinki-NLP/opus-mt-en-id',
-    'id': 'Helsinki-NLP/opus-mt-en-id',
-    'polish': 'Helsinki-NLP/opus-mt-en-pl',
-    'pl': 'Helsinki-NLP/opus-mt-en-pl',
-    'dutch': 'Helsinki-NLP/opus-mt-en-nl',
-    'nl': 'Helsinki-NLP/opus-mt-en-nl',
-    'swedish': 'Helsinki-NLP/opus-mt-en-sv',
-    'sv': 'Helsinki-NLP/opus-mt-en-sv',
-    'greek': 'Helsinki-NLP/opus-mt-en-el',
-    'el': 'Helsinki-NLP/opus-mt-en-el',
-    'hungarian': 'Helsinki-NLP/opus-mt-en-hu',
-    'hu': 'Helsinki-NLP/opus-mt-en-hu'
+    'hi': 'Helsinki-NLP/opus-mt-en-hi',    # Hindi
+    'ko': 'Helsinki-NLP/opus-mt-en-ko',    # Korean
+    'fr': 'Helsinki-NLP/opus-mt-en-fr',    # French
 }
 
 def load_model(language_code):
@@ -67,7 +28,7 @@ def index():
     selected_language = "hi"  # Default language (Hindi)
     
     if request.method == 'POST':
-        text = request.form.get('data', '')
+        text = request.form.get('text', '')
         selected_language = request.form.get('language', 'hi')
         
         if text and selected_language in LANGUAGE_MODELS:
@@ -85,4 +46,6 @@ def index():
     return render_template('index.html', result=result, selected_language=selected_language)
 
 if __name__ == '__main__':
-    app.run()
+    print("🚀 Starting Flask Application...")
+    print("📝 Models supported: Hindi, Korean, French")
+    app.run(debug=True, host='127.0.0.1', port=5000)
