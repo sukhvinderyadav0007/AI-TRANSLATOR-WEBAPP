@@ -26,14 +26,51 @@ body {
 h2 {
     text-align: center;
     color: #333;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-size: 28px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
 }
 
 form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+select {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
 }
 
 textarea {
@@ -92,10 +129,12 @@ h4 {
     line-height: 1.6;
 }
 
-.result-box:empty::before {
-    content: 'Translation will appear here...';
+.result-box.empty {
     color: #999;
     font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 600px) {

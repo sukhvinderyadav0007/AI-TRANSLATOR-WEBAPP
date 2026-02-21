@@ -2,21 +2,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English to Hindi Translator</title>
+    <title>Multi-Language Translator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h2>Language Translator: English to Hindi</h2>
+        <h2>🌍 Multi-Language Translator</h2>
+        <p class="subtitle">Translate English to 20+ Languages</p>
+        
         <form method="POST" action="/">
-            <textarea placeholder="Enter text here..." name="data" required></textarea><br>
-            <button type="submit">Translate</button>
+            <div class="form-group">
+                <label for="language">Select Target Language:</label>
+                <select id="language" name="language" required>
+                    <!-- Asian Languages -->
+                    <optgroup label="🌏 Asian Languages">
+                        <option value="hi" {% if selected_language == 'hi' %}selected{% endif %}>English → Hindi</option>
+                        <option value="zh" {% if selected_language == 'zh' %}selected{% endif %}>English → Chinese (Simplified)</option>
+                        <option value="ko" {% if selected_language == 'ko' %}selected{% endif %}>English → Korean</option>
+                        <option value="ja" {% if selected_language == 'ja' %}selected{% endif %}>English → Japanese</option>
+                        <option value="th" {% if selected_language == 'th' %}selected{% endif %}>English → Thai</option>
+                        <option value="vi" {% if selected_language == 'vi' %}selected{% endif %}>English → Vietnamese</option>
+                        <option value="id" {% if selected_language == 'id' %}selected{% endif %}>English → Indonesian</option>
+                    </optgroup>
+                    <!-- European Languages -->
+                    <optgroup label="🌍 European Languages">
+                        <option value="es" {% if selected_language == 'es' %}selected{% endif %}>English → Spanish</option>
+                        <option value="fr" {% if selected_language == 'fr' %}selected{% endif %}>English → French</option>
+                        <option value="de" {% if selected_language == 'de' %}selected{% endif %}>English → German</option>
+                        <option value="pt" {% if selected_language == 'pt' %}selected{% endif %}>English → Portuguese</option>
+                        <option value="it" {% if selected_language == 'it' %}selected{% endif %}>English → Italian</option>
+                        <option value="nl" {% if selected_language == 'nl' %}selected{% endif %}>English → Dutch</option>
+                        <option value="sv" {% if selected_language == 'sv' %}selected{% endif %}>English → Swedish</option>
+                        <option value="pl" {% if selected_language == 'pl' %}selected{% endif %}>English → Polish</option>
+                        <option value="el" {% if selected_language == 'el' %}selected{% endif %}>English → Greek</option>
+                        <option value="hu" {% if selected_language == 'hu' %}selected{% endif %}>English → Hungarian</option>
+                    </optgroup>
+                    <!-- Other Languages -->
+                    <optgroup label="🌐 Other Languages">
+                        <option value="ru" {% if selected_language == 'ru' %}selected{% endif %}>English → Russian</option>
+                        <option value="tr" {% if selected_language == 'tr' %}selected{% endif %}>English → Turkish</option>
+                        <option value="ar" {% if selected_language == 'ar' %}selected{% endif %}>English → Arabic</option>
+                    </optgroup>
+                </select>
+            </div>
+            
+            <textarea placeholder="Enter English text here..." name="data" required></textarea><br>
+            <button type="submit">Translate 🚀</button>
         </form>
-        <h4>Result</h4>
+        
+        <h4>Translation Result</h4>
         {% if result %}
             <div class="result-box">{{ result }}</div>
         {% else %}
-            <div class="result-box"></div>
+            <div class="result-box empty">Translation will appear here...</div>
         {% endif %}
     </div>
 </body>
